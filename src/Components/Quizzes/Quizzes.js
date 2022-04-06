@@ -1,7 +1,16 @@
-function Quizzes() {
+import { availableCategories } from "../../Quiz Questions/Data";
+import QuizCategoryCard from "./QuizCategoryCard";
+
+function Quizzes(props) {
+  const { setCategory, selectedCategory } = props;
   return (
     <div>
-      <h1>Quiz</h1>
+      <QuizCategoryCard
+        category={availableCategories}
+        setCategory={setCategory}
+        selectedCategory={selectedCategory}
+      />
+      ;
     </div>
   );
 }
