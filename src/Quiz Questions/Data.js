@@ -1622,9 +1622,10 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fc12",
     correctAnswer: '"What a dump."',
-    incorrectAnswers: [
+    allOptions: [
       '"May the odds ever be in your favor."',
       '"We’re goin’ streaking!"',
+      '"What a dump."',
       '"Mother of mercy, is this the end of Rico?"',
     ],
     question: "Which of these quotes is from the film 'Beyond the Forest'?",
@@ -1635,7 +1636,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fb6c",
     correctAnswer: "Gentleman's Agreement",
-    incorrectAnswers: ["The Bishop's Wife", "Crossfire", "Great Expectations"],
+    allOptions: [
+      "Gentleman's Agreement",
+      "The Bishop's Wife",
+      "Crossfire",
+      "Great Expectations",
+    ],
     question: "Which film won the Academy Award for Best Picture in 1947?",
     tags: [],
     type: "Multiple Choice",
@@ -1644,7 +1650,7 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fae8",
     correctAnswer: "Paul Newman",
-    incorrectAnswers: ["Dexter Gordon", "Bob Hoskins", "William Hurt"],
+    allOptions: ["Dexter Gordon", "Paul Newman", "Bob Hoskins", "William Hurt"],
     question:
       "Who won the 1986 Academy Award for Best Leading Actor for playing the role of Eddie Felson in The Color of Money?",
     tags: [],
@@ -1654,10 +1660,11 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c357cc59eab6f94fc3e",
     correctAnswer: '"E.T. phone home."',
-    incorrectAnswers: [
+    allOptions: [
       '"There\'s no place like home."',
       '"I’ve been a poor man and I’ve been a rich man. And I choose rich every f****** time!"',
       '"A census taker once tried to test me. I ate his liver with some fava beans and a nice Chianti."',
+      '"E.T. phone home."',
     ],
     question:
       "Which of these quotes is from the film 'E.T.: The Extra-Terrestrial'?",
@@ -1668,7 +1675,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950788",
     correctAnswer: "George Clooney",
-    incorrectAnswers: ["Sean Connery", "Gary Oldman", "Ewan McGregor"],
+    allOptions: [
+      "Sean Connery",
+      "Gary Oldman",
+      "George Clooney",
+      "Ewan McGregor",
+    ],
     question: "Which actor has featued in films including ER and Gravity?",
     tags: [],
     type: "Multiple Choice",
@@ -1677,7 +1689,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950721",
     correctAnswer: "Kirsten Dunst",
-    incorrectAnswers: ["Charlize Theron", "Emma Thompson", "Helen Mirren"],
+    allOptions: [
+      "Charlize Theron",
+      "Emma Thompson",
+      "Helen Mirren",
+      "Kirsten Dunst",
+    ],
     question:
       "Which actor has featued in films including Fargo and Spider-Man?",
     tags: ["acting", "film"],
@@ -1687,7 +1704,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950618",
     correctAnswer: "Zoe Saldana",
-    incorrectAnswers: ["Catherine Deneuve", "Audrey Hepburn", "Rachel Weisz"],
+    allOptions: [
+      "Catherine Deneuve",
+      "Zoe Saldana",
+      "Audrey Hepburn",
+      "Rachel Weisz",
+    ],
     question:
       "Which actor has featued in films including Avengers: Endgame and Avatar?",
     tags: ["acting", "film"],
@@ -1697,7 +1719,8 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fbd0",
     correctAnswer: '"My precious."',
-    incorrectAnswers: [
+    allOptions: [
+      '"My precious."',
       '"Keep your friends close, but your enemies closer."',
       '"You\'re gonna need a bigger boat."',
       '"You shall not pass!"',
@@ -1711,9 +1734,10 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f9507d1",
     correctAnswer: "Morgan Freeman",
-    incorrectAnswers: [
+    allOptions: [
       "Christopher Lee",
       "Liam Neeson",
+      "Morgan Freeman",
       "Arnold Schwarzenegger",
     ],
     question:
@@ -1725,7 +1749,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c367cc59eab6f950202",
     correctAnswer: "Michael Bay",
-    incorrectAnswers: ["Steven Spielberg", "Woody Allen", "Martin Scorsese"],
+    allOptions: [
+      "Steven Spielberg",
+      "Michael Bay",
+      "Woody Allen",
+      "Martin Scorsese",
+    ],
     question: "Which director directed Transformers?",
     tags: [],
     type: "Multiple Choice",
@@ -1734,7 +1763,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950700",
     correctAnswer: "Sandra Bæ Hovedr",
-    incorrectAnswers: ["Charlize Theron", "Emma Thompson", "Maggie Smith"],
+    allOptions: [
+      "Charlize Theron",
+      "Emma Thompson",
+      "Maggie Smith",
+      "Sandra Bæ Hovedr",
+    ],
     question: "Which actor has featued in films including Gravity and Speed?",
     tags: [],
     type: "Multiple Choice",
@@ -1743,7 +1777,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950625",
     correctAnswer: "Jennifer Lawrence",
-    incorrectAnswers: ["Catherine Deneuve", "Audrey Hepburn", "Rachel Weisz"],
+    allOptions: [
+      "Jennifer Lawrence",
+      "Catherine Deneuve",
+      "Audrey Hepburn",
+      "Rachel Weisz",
+    ],
     question:
       "Which actor has featued in films including X-Men: Days of Future Past and American Hustle?",
     tags: ["acting", "film"],
@@ -1753,7 +1792,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c367cc59eab6f9501f9",
     correctAnswer: "Peter Jackson",
-    incorrectAnswers: ["Steven Spielberg", "Woody Allen", "Martin Scorsese"],
+    allOptions: [
+      "Steven Spielberg",
+      "Woody Allen",
+      "Peter Jackson",
+      "Martin Scorsese",
+    ],
     question:
       "Which director directed The Lord of the Rings: The Fellowship of the Ring?",
     tags: ["film"],
@@ -1763,7 +1807,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94f935",
     correctAnswer: "Sweet Smell of Success",
-    incorrectAnswers: ["Network", "It's A Wonderful Life", "The Shining"],
+    allOptions: [
+      "Network",
+      "It's A Wonderful Life",
+      "Sweet Smell of Success",
+      "The Shining",
+    ],
     question: "Which film contains the character 'J. J. Hunsecker'?",
     tags: [],
     type: "Multiple Choice",
@@ -1772,7 +1821,7 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950719",
     correctAnswer: "Kathy Bates",
-    incorrectAnswers: ["Maggie Smith", "Helen Mirren", "Kate Winslet"],
+    allOptions: ["Maggie Smith", "Helen Mirren", "Kate Winslet", "Kathy Bates"],
     question:
       "Which actor has featued in films including American Horror Story and Titanic?",
     tags: ["acting"],
@@ -1782,7 +1831,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fafe",
     correctAnswer: "Sandra Bullock",
-    incorrectAnswers: ["Helen Mirren", "Carey Mulligan", "Gabourey Sidibe"],
+    allOptions: [
+      "Sandra Bullock",
+      "Helen Mirren",
+      "Carey Mulligan",
+      "Gabourey Sidibe",
+    ],
     question:
       "Who won the 2009 Academy Award for Best Leading Actress for playing the role of Leigh Anne Tuohy in The Blind Side?",
     tags: [],
@@ -1792,7 +1846,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fa90",
     correctAnswer: "Viola Davis",
-    incorrectAnswers: ["Naomie Harris", "Nicole Kidman", "Octavia Spencer"],
+    allOptions: [
+      "Naomie Harris",
+      "Nicole Kidman",
+      "Octavia Spencer",
+      "Viola Davis",
+    ],
     question:
       "Who won the 2016 Academy Award for Best Supporting Actress for playing the role of Rose Maxson in Fences?",
     tags: [],
@@ -1802,8 +1861,9 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fc02",
     correctAnswer: '"I have always depended on the kindness of strangers."',
-    incorrectAnswers: [
+    allOptions: [
       '"A boy\'s best friend is his mother."',
+      '"I have always depended on the kindness of strangers."',
       '"Oh what a day. What a lovely day!"',
       "\"Wait a minute, wait a minute. You ain't heard nothin' yet!\"",
     ],
@@ -1816,7 +1876,7 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c347cc59eab6f94fb06",
     correctAnswer: "Helen Mirren",
-    incorrectAnswers: ["Penélope Cruz", "Judi Dench", "Meryl Streep"],
+    allOptions: ["Penélope Cruz", "Helen Mirren", "Judi Dench", "Meryl Streep"],
     question:
       "Who won the 2006 Academy Award for Best Leading Actress for playing the role of The Queen in The Queen?",
     tags: [],
@@ -1826,7 +1886,12 @@ const filmTv = [
     category: "Film & TV",
     id: "622a1c377cc59eab6f950797",
     correctAnswer: "Robert Downey Jr.",
-    incorrectAnswers: ["Chris Evans", "Chris Hemsworth", "Tom Holland"],
+    allOptions: [
+      "Chris Evans",
+      "Chris Hemsworth",
+      "Robert Downey Jr.",
+      "Tom Holland",
+    ],
     question:
       "Which actor played the role of Iron Man in the Marvel Cinematic Universe?",
     tags: ["acting", "film", "marvel", "comics", "mcu"],
