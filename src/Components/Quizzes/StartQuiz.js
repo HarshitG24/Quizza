@@ -17,6 +17,7 @@ import "./css/StartQuiz.css";
 function StartQuiz(props) {
   const { selectedCategory } = props;
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentOption, setCurrentOption] = useState(-1);
 
   function findMyCategory(selectedCategory) {
     switch (selectedCategory) {
@@ -49,16 +50,26 @@ function StartQuiz(props) {
   return (
     <div>
       <h1>
-        <QuestionCard question={ques} index={currentQuestion} />
+        <QuestionCard
+          question={ques}
+          index={currentQuestion}
+          currentOption={currentOption}
+          setCurrentOption={setCurrentOption}
+        />
         <div className="quiz-btn">
-          <div>
+          {/* <div>
             <button onClick={() => setCurrentQuestion(currentQuestion - 1)}>
               Previous
             </button>
-          </div>
+          </div> */}
 
           <div>
-            <button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
+            <button
+              onClick={() => {
+                setCurrentQuestion(currentQuestion + 1);
+                setCurrentOption(-1);
+              }}
+            >
               Next
             </button>
           </div>
