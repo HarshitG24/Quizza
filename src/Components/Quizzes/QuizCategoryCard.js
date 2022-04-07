@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function QuizCategoryCard(props) {
   const [userReadytoQuiz, setUserReady] = useState(false);
+  const [cardSelected, setSelectedCard] = useState(-1);
   const { category, setCategory, selectedCategory } = props;
 
   function quizNotStarted() {
@@ -13,8 +14,15 @@ function QuizCategoryCard(props) {
           {category.map((elem, index) => (
             <div
               key={index}
-              className="catgeory-card"
-              onClick={() => setCategory(elem)}
+              className={
+                index === cardSelected
+                  ? "catgeory-card-selected"
+                  : "catgeory-card"
+              }
+              onClick={() => {
+                setCategory(elem);
+                setSelectedCard(index);
+              }}
             >
               <p> {elem} </p>
             </div>
@@ -29,8 +37,8 @@ function QuizCategoryCard(props) {
   }
   return (
     <div>
-      {selectedCategory !== "" ? (
-        <StartQuiz category={selectedCategory} />
+      {userReadytoQuiz ? (
+        <StartQuiz selectedCategory={selectedCategory} />
       ) : (
         quizNotStarted()
       )}
