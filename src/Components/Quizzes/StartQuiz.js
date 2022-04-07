@@ -1,8 +1,8 @@
 function StartQuiz(props) {
-  const { category } = props;
+  const { selectedCategory } = props;
   return (
     <div>
-      <h1>{category}</h1>
+      <h1>{selectedCategory}</h1>
     </div>
   );
 }

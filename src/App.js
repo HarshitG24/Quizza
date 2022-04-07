@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function App() {
   const [selectedCategory, setCategory] = useState("");
-  console.log("the category is", selectedCategory);
+  console.log("the category is this:", selectedCategory);
   return (
     <BrowserRouter>
       <Navbar />
@@ -24,7 +24,10 @@ function App() {
             />
           }
         />
-        <Route path="/start-quiz" element={<StartQuiz />} />
+        <Route
+          path="/start-quiz"
+          element={<StartQuiz selectedCategory={selectedCategory} />}
+        />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
