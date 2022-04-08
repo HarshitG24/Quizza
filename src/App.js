@@ -6,6 +6,7 @@ import Quizzes from "./Components/Quizzes/Quizzes";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import StartQuiz from "./Components/Quizzes/StartQuiz";
 import { useState } from "react";
+import Result from "./Components/Results/Result";
 
 function App() {
   const [selectedCategory, setCategory] = useState("");
@@ -29,6 +30,7 @@ function App() {
           element={<StartQuiz selectedCategory={selectedCategory} />}
         />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );

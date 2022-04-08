@@ -13,12 +13,15 @@ import {
 import QuestionCard from "./QuestionCard";
 import { useState, useEffect } from "react";
 import "./css/StartQuiz.css";
+import { useNavigate } from "react-router-dom";
 
 function StartQuiz(props) {
   const { selectedCategory } = props;
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState(-1);
   const [currentScore, setCurrentScore] = useState(0);
+
+  const navigate = useNavigate();
 
   function findMyCategory(selectedCategory) {
     let quesArr = [];
@@ -108,6 +111,10 @@ function StartQuiz(props) {
                 setCurrentQuestion(currentQuestion + 1);
                 setCurrentOption(-1);
                 setScore();
+                console.log("currentQuestion", currentQuestion);
+                if (currentQuestion + 1 >= 5) {
+                  navigate("/result");
+                }
               }}
             >
               Next
