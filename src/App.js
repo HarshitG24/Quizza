@@ -1,12 +1,12 @@
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./Components/Home/Home";
 import Quizzes from "./Components/Quizzes/Quizzes";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import StartQuiz from "./Components/Quizzes/StartQuiz";
 import { useState } from "react";
 import Result from "./Components/Results/Result";
+import Home from "./Components/Home/Home";
 
 function App() {
   const [selectedCategory, setCategory] = useState("");
