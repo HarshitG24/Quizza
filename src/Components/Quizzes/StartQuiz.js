@@ -11,42 +11,81 @@ import {
   artsLiterature,
 } from "../../Quiz Questions/Data";
 import QuestionCard from "./QuestionCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./css/StartQuiz.css";
 
 function StartQuiz(props) {
   const { selectedCategory } = props;
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState(-1);
+  const [currentScore, setCurrentScore] = useState(0);
 
   function findMyCategory(selectedCategory) {
+    let quesArr = [];
     switch (selectedCategory) {
       case "Sports & Leisure":
-        return sportsLeisure;
+        quesArr = sportsLeisure;
+        break;
       case "Society & Culture":
-        return societyCulture;
+        quesArr = societyCulture;
+        break;
       case "Science":
-        return science;
+        quesArr = science;
+        break;
       case "Music":
-        return music;
+        quesArr = music;
+        break;
       case "History":
-        return history;
+        quesArr = history;
+        break;
       case "Geography":
-        return geography;
+        quesArr = geography;
+        break;
       case "General knowledge":
-        return generalKnowledge;
+        quesArr = generalKnowledge;
+        break;
       case "Food & Drink":
-        return foodDrink;
+        quesArr = foodDrink;
+        break;
       case "Film & TV":
-        return filmTv;
+        quesArr = filmTv;
+        break;
       case "Arts & Literature":
-        return artsLiterature;
+        quesArr = artsLiterature;
+        break;
       default:
-        return [];
+        quesArr = [];
+        break;
     }
+
+    // quesArr = shuffle(quesArr).splice(0, 5);
+    // console.log("xyz", quesArr);
+    return quesArr;
+  }
+
+  function shuffle(arr) {
+    let j, x, index;
+    for (index = arr.length - 1; index > 0; index--) {
+      j = Math.floor(Math.random() * (index + 1));
+      x = arr[index];
+      arr[index] = arr[j];
+      arr[j] = x;
+    }
+    return arr;
   }
 
   let ques = findMyCategory(selectedCategory)[currentQuestion];
+
+  console.log("selected option is", currentOption);
+
+  function setScore() {
+    let userAnswer = ques?.allOptions[currentOption];
+    if (ques.correctAnswer === userAnswer) {
+      setCurrentScore(currentScore + 1);
+    }
+  }
+
+  console.log("the question is", ques);
   return (
     <div>
       <h1>
@@ -68,12 +107,14 @@ function StartQuiz(props) {
               onClick={() => {
                 setCurrentQuestion(currentQuestion + 1);
                 setCurrentOption(-1);
+                setScore();
               }}
             >
               Next
             </button>
           </div>
         </div>
+        <p>{currentScore}/20</p>
       </h1>
     </div>
   );
