@@ -17,11 +17,11 @@ import { useNavigate } from "react-router-dom";
 
 function StartQuiz(props) {
   const { selectedCategory } = props;
+  const navigate = useNavigate();
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState(-1);
   const [currentScore, setCurrentScore] = useState(0);
-
-  const navigate = useNavigate();
 
   function findMyCategory(selectedCategory) {
     let quesArr = [];
@@ -79,8 +79,6 @@ function StartQuiz(props) {
 
   let ques = findMyCategory(selectedCategory)[currentQuestion];
 
-  console.log("selected option is", currentOption);
-
   function setScore() {
     let userAnswer = ques?.allOptions[currentOption];
     if (ques.correctAnswer === userAnswer) {
@@ -88,7 +86,6 @@ function StartQuiz(props) {
     }
   }
 
-  console.log("the question is", ques);
   return (
     <div>
       <h1>
@@ -99,21 +96,17 @@ function StartQuiz(props) {
           setCurrentOption={setCurrentOption}
         />
         <div className="quiz-btn">
-          {/* <div>
-            <button onClick={() => setCurrentQuestion(currentQuestion - 1)}>
-              Previous
-            </button>
-          </div> */}
-
           <div>
             <button
               onClick={() => {
                 setCurrentQuestion(currentQuestion + 1);
                 setCurrentOption(-1);
                 setScore();
-                console.log("currentQuestion", currentQuestion);
                 if (currentQuestion + 1 >= 5) {
-                  navigate("/result");
+                  navigate({
+                    pathname: "/result",
+                    search: `?result=${currentScore}`,
+                  });
                 }
               }}
             >
@@ -121,7 +114,6 @@ function StartQuiz(props) {
             </button>
           </div>
         </div>
-        <p>{currentScore}/20</p>
       </h1>
     </div>
   );
