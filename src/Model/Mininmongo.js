@@ -55,14 +55,4 @@ const removeFromDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
   });
 };
 
-function findAndRemove(
-  dbName = "quiz_score",
-  collection = "Food & Drink",
-  quizObj
-) {
-  getData("quiz_score", "Food & Drink", (fetchedObjected) => {
-    removeFromDb("quiz_score", "Food & Drink", fetchedObjected);
-  });
-}
-
-export { addToDb, getData, removeFromDb, findAndRemove };
+export { addToDb, getData, removeFromDb };

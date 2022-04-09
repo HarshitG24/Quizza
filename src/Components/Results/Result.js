@@ -7,18 +7,21 @@ function Result(props) {
   const [result, setResult] = useState({});
 
   useEffect(() => {
-    getData("quiz_score", selectedCategory, (fetchedResult) => {
-      console.log("fethced results are", fetchedResult);
+    getData("quiz_score", "quiz", (fetchedResult) => {
+      fetchedResult = fetchedResult.filter(
+        (q) => q.selectedCategory === selectedCategory
+      );
 
       let max = 0;
       let time = "";
       let ansSummary = [];
       (fetchedResult || []).forEach((e) => {
-        if (e.currentScore > max) {
+        if (e?.quizData?.currentScore >= max) {
           console.log("e", e);
-          max = e.currentScore;
-          time = e.dateTime;
-          ansSummary = JSON.parse(e.answerSummary);
+          let data = e?.quizData;
+          max = data?.currentScore;
+          time = data?.dateTime;
+          ansSummary = JSON.parse(data?.answerSummary || []);
         }
       });
       setResult({ max, time, ansSummary });
