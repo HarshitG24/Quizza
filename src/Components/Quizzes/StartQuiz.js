@@ -137,10 +137,13 @@ function StartQuiz(props) {
                 setCurrentOption(-1);
                 setScore();
                 if (currentQuestion + 1 >= 5) {
-                  await addToDb("quiz_score", selectedCategory, {
-                    currentScore,
-                    dateTime: new Date().toLocaleDateString(),
-                    answerSummary: JSON.stringify(arr),
+                  await addToDb("quiz_score", "quiz", {
+                    selectedCategory,
+                    quizData: {
+                      currentScore,
+                      dateTime: new Date().toLocaleDateString(),
+                      answerSummary: JSON.stringify(arr),
+                    },
                   });
 
                   navigate({
