@@ -1,6 +1,6 @@
 import minimongo from "minimongo";
 
-const addToDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
+const addToDb = (dbName = "quiz_app", collection = "quiz", quizObj) => {
   return new Promise((resolve, reject) => {
     let db = new minimongo.IndexedDb(
       {
@@ -10,7 +10,7 @@ const addToDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
         db.addCollection(
           collection,
           function () {
-            db[collection].upsert(productObj, resolve, reject);
+            db[collection].upsert(quizObj, resolve, reject);
           },
           reject
         );
@@ -55,4 +55,14 @@ const removeFromDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
   });
 };
 
-export { addToDb, getData, removeFromDb };
+function findAndRemove(
+  dbName = "quiz_score",
+  collection = "Food & Drink",
+  quizObj
+) {
+  getData("quiz_score", "Food & Drink", (fetchedObjected) => {
+    removeFromDb("quiz_score", "Food & Drink", fetchedObjected);
+  });
+}
+
+export { addToDb, getData, removeFromDb, findAndRemove };
