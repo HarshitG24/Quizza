@@ -30,7 +30,10 @@ function App() {
           element={<StartQuiz selectedCategory={selectedCategory} />}
         />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/result" element={<Result />} />
+        <Route
+          path="/result"
+          element={<Result selectedCategory={selectedCategory} />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -14,6 +14,7 @@ import QuestionCard from "./QuestionCard";
 import { useState, useEffect } from "react";
 import "./css/StartQuiz.css";
 import { useNavigate } from "react-router-dom";
+import { addToDb, findAndRemove } from "../../Model/Mininmongo";
 
 function StartQuiz(props) {
   const { selectedCategory } = props;
@@ -22,6 +23,7 @@ function StartQuiz(props) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentOption, setCurrentOption] = useState(-1);
   const [currentScore, setCurrentScore] = useState(0);
+  const [answerSummary, setAnswerSummary] = useState([]);
 
   function findMyCategory(selectedCategory) {
     let quesArr = [];
@@ -86,6 +88,21 @@ function StartQuiz(props) {
     }
   }
 
+  function convertNumberToAlphabet(num) {
+    switch (num) {
+      case 1:
+        return "A";
+      case 2:
+        return "B";
+      case 3:
+        return "C";
+      case 4:
+        return "D";
+      default:
+        return "";
+    }
+  }
+
   return (
     <div>
       <h1>
@@ -98,14 +115,36 @@ function StartQuiz(props) {
         <div className="quiz-btn">
           <div>
             <button
-              onClick={() => {
+              onClick={async () => {
+                let arr = [
+                  ...answerSummary,
+                  {
+                    question: currentQuestion + 1,
+                    correctAnswer: convertNumberToAlphabet(
+                      ques.allOptions.findIndex(
+                        (e) => e === ques.correctAnswer
+                      ) + 1
+                    ),
+                    userAnswer: convertNumberToAlphabet(
+                      ques.allOptions.findIndex(
+                        (e) => e === ques?.allOptions[currentOption]
+                      ) + 1
+                    ),
+                  },
+                ];
+                setAnswerSummary(arr);
                 setCurrentQuestion(currentQuestion + 1);
                 setCurrentOption(-1);
                 setScore();
                 if (currentQuestion + 1 >= 5) {
+                  await addToDb("quiz_score", selectedCategory, {
+                    currentScore,
+                    dateTime: new Date().toLocaleDateString(),
+                    answerSummary: JSON.stringify(arr),
+                  });
+
                   navigate({
                     pathname: "/result",
-                    search: `?result=${currentScore}`,
                   });
                 }
               }}
