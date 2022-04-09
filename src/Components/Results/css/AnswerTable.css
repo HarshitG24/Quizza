@@ -1,0 +1,36 @@
+table {
+  border-collapse: collapse;
+}
+
+.ans-table {
+  text-align: center;
+  width: 60%;
+}
+
+.table-col-top {
+  border-top: 0.008rem solid #000;
+  height: 2.5rem;
+  background-color: #ffd36e;
+}
+
+.table-col,
+td {
+  /* background-color: hotpink; */
+  border-bottom: 0.008rem solid #000;
+  border-right: 0.008rem solid #000;
+  /* border-left: 0.1 rem solid #000; */
+}
+
+.table-col-left {
+  border-left: 0.008rem solid #000;
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.table-row-red {
+  background-color: #ff6b6b;
+}
+
+.table-row-green {
+  background-color: #6bcb77;
+}
