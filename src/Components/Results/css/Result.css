@@ -1,3 +1,37 @@
+.result {
+  margin-left: 2rem;
+}
+
+.result-data {
+  display: flex;
+  flex-direction: row;
+}
+
+.result-data-category {
+  font-weight: 800;
+}
+
+.go-to-dashboard-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.go-to-dashboard {
+  text-decoration: none;
+  background-color: #ffe162;
+  border: 0.01rem solid #000;
+  width: 10rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  border-radius: 2rem;
+}
+
 .result-group {
   display: flex;
   flex-direction: row;
