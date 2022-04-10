@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import "./css/StartQuiz.css";
 import { useNavigate } from "react-router-dom";
 import { addToDb, findAndRemove } from "../../Model/Mininmongo";
+import { shuffle } from "../../Model/HelperFunctions";
 
 function StartQuiz(props) {
   const { selectedCategory } = props;
@@ -24,6 +25,7 @@ function StartQuiz(props) {
   const [currentOption, setCurrentOption] = useState(-1);
   const [currentScore, setCurrentScore] = useState(0);
   const [answerSummary, setAnswerSummary] = useState([]);
+  const [questionBank, setQuestionBank] = useState([]);
 
   function findMyCategory(selectedCategory) {
     let quesArr = [];
@@ -62,31 +64,24 @@ function StartQuiz(props) {
         quesArr = [];
         break;
     }
-
-    // quesArr = shuffle(quesArr).splice(0, 5);
-    // console.log("xyz", quesArr);
     return quesArr;
   }
 
-  function shuffle(arr) {
-    let j, x, index;
-    for (index = arr.length - 1; index > 0; index--) {
-      j = Math.floor(Math.random() * (index + 1));
-      x = arr[index];
-      arr[index] = arr[j];
-      arr[j] = x;
-    }
-    return arr;
-  }
-
-  let ques = findMyCategory(selectedCategory)[currentQuestion];
+  // let ques = findMyCategory(selectedCategory)[currentQuestion];
 
   function setScore() {
-    let userAnswer = ques?.allOptions[currentOption];
-    if (ques.correctAnswer === userAnswer) {
+    let userAnswer = questionBank[currentQuestion]?.allOptions[currentOption];
+    if (questionBank[currentQuestion].correctAnswer === userAnswer) {
       setCurrentScore(currentScore + 1);
     }
   }
+
+  useEffect(() => {
+    let questions = findMyCategory(selectedCategory);
+    let randomlyPickedQuestions = shuffle(questions).slice(0, 5);
+    console.log("picked questions", randomlyPickedQuestions);
+    setQuestionBank(randomlyPickedQuestions);
+  }, []);
 
   function convertNumberToAlphabet(num) {
     switch (num) {
@@ -103,60 +98,77 @@ function StartQuiz(props) {
     }
   }
 
+  console.log("current question", currentQuestion);
   return (
     <div>
       <h1>
-        <QuestionCard
-          question={ques}
-          index={currentQuestion}
-          currentOption={currentOption}
-          setCurrentOption={setCurrentOption}
-        />
-        <div className="quiz-btn">
+        {questionBank.length > 0 ? (
           <div>
-            <button
-              onClick={async () => {
-                let arr = [
-                  ...answerSummary,
-                  {
-                    question: currentQuestion + 1,
-                    correctAnswer: convertNumberToAlphabet(
-                      ques.allOptions.findIndex(
-                        (e) => e === ques.correctAnswer
-                      ) + 1
-                    ),
-                    userAnswer: convertNumberToAlphabet(
-                      ques.allOptions.findIndex(
-                        (e) => e === ques?.allOptions[currentOption]
-                      ) + 1
-                    ),
-                  },
-                ];
-                setAnswerSummary(arr);
-                setCurrentQuestion(currentQuestion + 1);
-                setCurrentOption(-1);
-                setScore();
-                if (currentQuestion + 1 >= 5) {
-                  await findAndRemove("quiz_score", "quiz", selectedCategory);
-                  await addToDb("quiz_score", "quiz", {
-                    selectedCategory,
-                    quizData: {
-                      currentScore,
-                      dateTime: new Date().toLocaleDateString(),
-                      answerSummary: JSON.stringify(arr),
-                    },
-                  });
+            <QuestionCard
+              question={questionBank[currentQuestion]}
+              index={currentQuestion}
+              currentOption={currentOption}
+              setCurrentOption={setCurrentOption}
+            />
+            <div className="quiz-btn">
+              <div>
+                <button
+                  onClick={async () => {
+                    let arr = [
+                      ...answerSummary,
+                      {
+                        question: currentQuestion + 1,
+                        correctAnswer: convertNumberToAlphabet(
+                          questionBank[currentQuestion].allOptions.findIndex(
+                            (e) =>
+                              e === questionBank[currentQuestion].correctAnswer
+                          ) + 1
+                        ),
+                        userAnswer: convertNumberToAlphabet(
+                          questionBank[currentQuestion].allOptions.findIndex(
+                            (e) =>
+                              e ===
+                              questionBank[currentQuestion]?.allOptions[
+                                currentOption
+                              ]
+                          ) + 1
+                        ),
+                      },
+                    ];
+                    setAnswerSummary(arr);
 
-                  navigate({
-                    pathname: "/result",
-                  });
-                }
-              }}
-            >
-              Next
-            </button>
+                    if (currentQuestion < 4) {
+                      setCurrentQuestion(currentQuestion + 1);
+                    }
+                    setCurrentOption(-1);
+                    setScore();
+                    if (currentQuestion === 4) {
+                      await findAndRemove(
+                        "quiz_score",
+                        "quiz",
+                        selectedCategory
+                      );
+                      await addToDb("quiz_score", "quiz", {
+                        selectedCategory,
+                        quizData: {
+                          currentScore,
+                          dateTime: new Date().toLocaleDateString(),
+                          answerSummary: JSON.stringify(arr),
+                        },
+                      });
+
+                      navigate({
+                        pathname: "/result",
+                      });
+                    }
+                  }}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ) : null}
       </h1>
     </div>
   );
