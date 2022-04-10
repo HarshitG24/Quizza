@@ -1,0 +1,14 @@
+.dashboard {
+  margin-left: 2rem;
+}
+
+.no-test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-test-text {
+  font-weight: 800;
+  font-size: 3rem;
+}
