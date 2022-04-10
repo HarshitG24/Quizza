@@ -35,7 +35,7 @@ const getData = (dbName = "quiz_app", collection = "quiz", doneCBK) => {
   );
 };
 
-const removeFromDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
+const removeFromDb = (dbName = "quiz_app", collection = "quiz", quizObj) => {
   return new Promise((resolve, reject) => {
     let db = new minimongo.IndexedDb(
       {
@@ -45,7 +45,7 @@ const removeFromDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
         db.addCollection(
           collection,
           function () {
-            db[collection].remove(productObj, resolve, reject);
+            db[collection].remove(quizObj, resolve, reject);
           },
           reject
         );
@@ -55,4 +55,20 @@ const removeFromDb = (dbName = "quiz_app", collection = "quiz", productObj) => {
   });
 };
 
-export { addToDb, getData, removeFromDb };
+const findAndRemove = (
+  dbName = "quiz_app",
+  collection = "quiz",
+  selectedCategory
+) => {
+  getData(dbName, collection, (foundResultObj) => {
+    let obj = foundResultObj.find(
+      (e) => e.selectedCategory === selectedCategory
+    );
+
+    if (obj !== undefined) {
+      removeFromDb(dbName, collection, obj);
+    }
+  });
+};
+
+export { addToDb, getData, removeFromDb, findAndRemove };

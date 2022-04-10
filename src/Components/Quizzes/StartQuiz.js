@@ -137,6 +137,7 @@ function StartQuiz(props) {
                 setCurrentOption(-1);
                 setScore();
                 if (currentQuestion + 1 >= 5) {
+                  await findAndRemove("quiz_score", "quiz", selectedCategory);
                   await addToDb("quiz_score", "quiz", {
                     selectedCategory,
                     quizData: {
