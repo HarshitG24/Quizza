@@ -73,7 +73,10 @@ function StartQuiz(props) {
     let userAnswer = questionBank[currentQuestion]?.allOptions[currentOption];
     if (questionBank[currentQuestion].correctAnswer === userAnswer) {
       setCurrentScore(currentScore + 1);
+      return currentScore + 1;
     }
+
+    return currentScore;
   }
 
   useEffect(() => {
@@ -141,7 +144,7 @@ function StartQuiz(props) {
                       setCurrentQuestion(currentQuestion + 1);
                     }
                     setCurrentOption(-1);
-                    setScore();
+                    let myScore = setScore();
                     if (currentQuestion === 4) {
                       await findAndRemove(
                         "quiz_score",
@@ -151,7 +154,7 @@ function StartQuiz(props) {
                       await addToDb("quiz_score", "quiz", {
                         selectedCategory,
                         quizData: {
-                          currentScore,
+                          currentScore: myScore,
                           dateTime: new Date().toLocaleDateString(),
                           answerSummary: JSON.stringify(arr),
                         },
