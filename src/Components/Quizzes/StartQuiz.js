@@ -101,7 +101,47 @@ function StartQuiz(props) {
     }
   }
 
-  console.log("current question", currentQuestion);
+  async function nextBtnClicked() {
+    let arr = [
+      ...answerSummary,
+      {
+        question: currentQuestion + 1,
+        correctAnswer: convertNumberToAlphabet(
+          questionBank[currentQuestion].allOptions.findIndex(
+            (e) => e === questionBank[currentQuestion].correctAnswer
+          ) + 1
+        ),
+        userAnswer: convertNumberToAlphabet(
+          questionBank[currentQuestion].allOptions.findIndex(
+            (e) =>
+              e === questionBank[currentQuestion]?.allOptions[currentOption]
+          ) + 1
+        ),
+      },
+    ];
+    setAnswerSummary(arr);
+
+    if (currentQuestion < 4) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+    setCurrentOption(-1);
+    let myScore = setScore();
+    if (currentQuestion === 4) {
+      await findAndRemove("quiz_score", "quiz", selectedCategory);
+      await addToDb("quiz_score", "quiz", {
+        selectedCategory,
+        quizData: {
+          currentScore: myScore,
+          dateTime: new Date().toLocaleDateString(),
+          answerSummary: JSON.stringify(arr),
+        },
+      });
+
+      navigate({
+        pathname: "/result",
+      });
+    }
+  }
   return (
     <div>
       <h1>
@@ -116,54 +156,9 @@ function StartQuiz(props) {
             <div className="quiz-btn">
               <div>
                 <button
+                  disabled={currentOption === -1}
                   onClick={async () => {
-                    let arr = [
-                      ...answerSummary,
-                      {
-                        question: currentQuestion + 1,
-                        correctAnswer: convertNumberToAlphabet(
-                          questionBank[currentQuestion].allOptions.findIndex(
-                            (e) =>
-                              e === questionBank[currentQuestion].correctAnswer
-                          ) + 1
-                        ),
-                        userAnswer: convertNumberToAlphabet(
-                          questionBank[currentQuestion].allOptions.findIndex(
-                            (e) =>
-                              e ===
-                              questionBank[currentQuestion]?.allOptions[
-                                currentOption
-                              ]
-                          ) + 1
-                        ),
-                      },
-                    ];
-                    setAnswerSummary(arr);
-
-                    if (currentQuestion < 4) {
-                      setCurrentQuestion(currentQuestion + 1);
-                    }
-                    setCurrentOption(-1);
-                    let myScore = setScore();
-                    if (currentQuestion === 4) {
-                      await findAndRemove(
-                        "quiz_score",
-                        "quiz",
-                        selectedCategory
-                      );
-                      await addToDb("quiz_score", "quiz", {
-                        selectedCategory,
-                        quizData: {
-                          currentScore: myScore,
-                          dateTime: new Date().toLocaleDateString(),
-                          answerSummary: JSON.stringify(arr),
-                        },
-                      });
-
-                      navigate({
-                        pathname: "/result",
-                      });
-                    }
+                    nextBtnClicked();
                   }}
                 >
                   Next
