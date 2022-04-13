@@ -18,7 +18,11 @@
 }
 
 .take-quiz-btn {
-  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 
 .catgeory-card-selected {
@@ -27,7 +31,23 @@
   margin: 1em 20px;
   border: 0.3rem black solid;
   border-radius: 0.5rem;
-  background-color: yellow;
+  background-color: #ffe162;
   text-align: center;
   cursor: pointer;
+}
+
+.quiz-btn {
+  background-color: #ffe162;
+  border: 0.01rem solid #000;
+  width: 2rem;
+  height: 2rem;
+  color: #000;
+  border-radius: 2rem;
+  max-width: 10%;
+  cursor: pointer;
+}
+
+.quiz-btn-disabled {
+  opacity: 0.6;
+  cursor: default;
 }
