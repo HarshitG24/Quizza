@@ -5,18 +5,20 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: sandybrown;
+  background-color: #a2d5ab;
 }
 
 .card {
   width: 60%;
   height: auto; /*50vh; */
-  background-color: salmon;
+  background-color: #e5efc1;
   margin-bottom: 2rem;
 }
 
 .quiz-options {
   text-align: left;
+  margin-right: 2.5rem;
+  cursor: pointer;
 }
 
 .option-label {
@@ -28,15 +30,14 @@
 .option-row {
   display: flex;
   flex-direction: row;
-  background-color: slateblue;
+  background-color: #4d77ff;
   margin-bottom: 2rem;
-  /* align-items: center; */
 }
 
 .option-row-selected {
   display: flex;
   flex-direction: row;
-  background-color: slateblue;
+  background-color: #548cff;
   margin-bottom: 2rem;
-  background-color: springgreen;
+  background-color: #d77fa1;
 }

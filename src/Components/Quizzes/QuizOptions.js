@@ -17,7 +17,7 @@ function QuizOptions(props) {
     //   <li className="option-label">{option}</li>
     // </div>
 
-    <div>
+    <div className="quiz-option-div">
       {options.map((e, index) => {
         return (
           <div

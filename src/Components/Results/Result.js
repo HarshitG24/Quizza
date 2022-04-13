@@ -11,6 +11,8 @@ function Result(props) {
     switch (score) {
       case 1:
         return "Very Poor";
+      case 1:
+        return "Very Poor";
       case 2:
         return "Poor";
       case 3:
