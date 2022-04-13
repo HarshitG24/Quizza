@@ -153,9 +153,10 @@ function StartQuiz(props) {
               currentOption={currentOption}
               setCurrentOption={setCurrentOption}
             />
-            <div className="quiz-btn">
-              <div>
+            <div className="quiz-btn-div">
+              <div className="quiz-btn">
                 <button
+                  className="quiz-button"
                   disabled={currentOption === -1}
                   onClick={async () => {
                     nextBtnClicked();

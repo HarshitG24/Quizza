@@ -16,3 +16,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.quiz-background {
+  background: #e5efc1;
+  width: 100vw;
+  height: 100vh;
+}
