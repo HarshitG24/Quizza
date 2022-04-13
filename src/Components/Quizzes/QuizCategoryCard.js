@@ -30,7 +30,17 @@ function QuizCategoryCard(props) {
         </div>
 
         <div className="take-quiz-btn">
-          <button onClick={() => setUserReady(true)}>Take Quiz</button>
+          <button
+            className={
+              selectedCategory === ""
+                ? "quiz-btn quiz-btn-disabled"
+                : "quiz-btn"
+            }
+            disabled={selectedCategory === ""}
+            onClick={() => setUserReady(true)}
+          >
+            Take Quiz
+          </button>
         </div>
       </div>
     );

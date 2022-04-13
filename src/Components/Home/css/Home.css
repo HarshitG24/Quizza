@@ -1,0 +1,29 @@
+.home {
+  width: 100%;
+}
+
+.home-img {
+  width: 85%;
+  height: 75vh;
+  object-fit: contain;
+}
+
+.img-position {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-caption {
+  margin-top: 5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #5b7db1;
+}
+
+.fact-features-div {
+  margin-left: 2rem;
+}
+
+.facts-features {
+}
