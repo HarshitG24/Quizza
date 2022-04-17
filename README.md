@@ -38,4 +38,14 @@ Minimongo has been implemented only on the dashboard page.
 * If multiple quizzes taken, user can see the latest result only on dashboard.
 * On no other page, minimongo is implemented
 
+# Cypress - Implementing Tests
+* Total 3 tests are written using cypress.
+* To run the tests run the following command: **npm run cypress:open**
+* It should run the tests
+
+## The tests written
+1. One test is to make sure that initially on the quizzes page, the take quiz button is disabled and should become enabled only after category is selected.
+2. One test is to make sure that unless user doesn't select an option for the question, then cannot proceed to the next question.
+3. One test is to make sure that user is directed to dashboard from results page, when clicking on go-to-dashboard button.
+
 
