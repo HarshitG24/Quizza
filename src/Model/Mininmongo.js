@@ -104,4 +104,30 @@ const findAndRemove = (
   });
 };
 
-export { addToDb, getData, removeFromDb, findAndRemove };
+/**
+ * @typedef {Function} getDataWithoutCbk
+ * @param {String} dbName - Name of the database
+ * @param {String} collection - Name of the collection
+ * @returns {Promise}
+ * @description Finds the quiz object by fetching all the data, filtering and then removing from the database, but returns a promise instead of callback
+ */
+
+const getDataWithoutCbk = (dbName = "quiz_app", collection = "quiz") => {
+  return new Promise((resolve, reject) => {
+    const db = new minimongo.IndexedDb(
+      { namespace: dbName },
+      function () {
+        db.addCollection(
+          collection,
+          function () {
+            db[collection].find({}).fetch(resolve, reject);
+          },
+          reject
+        );
+      },
+      reject
+    );
+  });
+};
+
+export { addToDb, getData, removeFromDb, findAndRemove, getDataWithoutCbk };

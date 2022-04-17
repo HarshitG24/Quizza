@@ -36,7 +36,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       {quizesTaken.length > 0 ? (
-        <h3>Following are the quizes taken so far</h3>
+        <h3 className="dash-text">Following are the quizes taken so far</h3>
       ) : null}
 
       {quizesTaken.length > 0 ? (

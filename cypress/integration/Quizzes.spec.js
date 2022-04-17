@@ -1,4 +1,5 @@
 /* global cy */
+import { getDataWithoutCbk } from "../../src/Model/Mininmongo";
 
 describe("Select Category", () => {
   it("To check if the user selects category before starting the quiz", () => {
@@ -24,9 +25,31 @@ describe("Selection option in quiz", () => {
 });
 
 describe("Result page", () => {
+  before(() => {
+    cy.then(async () => {
+      let arr = await getDashboardData();
+      console.log("arr", arr);
+      cy.wrap(arr).as("fetchedData");
+    });
+  });
   it("Data is rendered correctly on dashboard", () => {
-    cy.visit("http://localhost:3000/result");
-    cy.get(".go-to-dashboard").click();
     cy.visit("http://localhost:3000/dashboard");
+    cy.get("@fetchedData").then((data) => {
+      if (data.length === 0) {
+        cy.get(".no-test-text").should("have.text", "No Tests taken");
+      } else {
+        cy.get(".dash-text").should(
+          "have.text",
+          "Following are the quizes taken so far"
+        );
+      }
+    });
   });
 });
+
+async function getDashboardData() {
+  console.log("started asyncFunction2");
+  let data = await getDataWithoutCbk("quiz_score", "quiz");
+  console.log("data is", data);
+  return data;
+}
