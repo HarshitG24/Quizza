@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Results/Result.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Results/Result.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
+import { getData } from "../../Model/Mininmongo";
+import "./css/Result.css";
+import AnswerTable from "./AnswerTable";
+
+/**
+ * Component for showing the table UI, which contains the question, correct answer and the user answer
+ * @component
+ * @param {Object} Props - An object.
+ * @param {String} props.selectedCategory - It contains the category of the quiz taken by the user.
+ */
+
+function Result(props) {
+  const { selectedCategory } = props;
+
+  /**
+   * @typedef {Object} result
+   * @description Object containing the score obtained by user, date of the quiz, array of objects, which contains question, correct and user answer
+   */
+  /**
+   * @typedef {Function} setResult — function to update the variable result, after being fetched from minimongo database.
+   */
+  const [result, setResult] = useState({});
+
+  /**
+   * @typedef {Function} getPerformanceText
+   * @param {Number} score The score obtained by the user in the current quiz
+   * @returns {String} Returns a word string demonstrating the user's performance in the quiz
+   */
+  function getPerformanceText(score) {
+    switch (score) {
+      case 1:
+        return "Very Poor";
+      case 1:
+        return "Very Poor";
+      case 2:
+        return "Poor";
+      case 3:
+        return "Average";
+      case 4:
+        return "Above Average";
+      case 5:
+        return "Outstanding";
+      default:
+        return "";
+    }
+  }
+
+  /**
+   * Used to encapsulate code which has side effects.
+   * @typedef {Function} useEffect - React Hook which is rendered only once.
+   * @param {Function} - Has an arraow function, which performs some tasks.
+   * @param {Array} - Contains the list of variables which when changes, useEffect is called
+   */
+  useEffect(() => {
+    getData("quiz_score", "quiz", (fetchedResult) => {
+      fetchedResult = fetchedResult.filter(
+        (q) => q.selectedCategory === selectedCategory
+      );
+
+      let max = 0;
+      let time = "";
+      let ansSummary = [];
+      (fetchedResult || []).forEach((e) => {
+        if (e?.quizData?.currentScore >= max) {
+          console.log("e", e);
+          let data = e?.quizData;
+          max = data?.currentScore;
+          time = data?.dateTime;
+          ansSummary = JSON.parse(data?.answerSummary || []);
+        }
+      });
+      setResult({ max, time, ansSummary });
+    });
+  }, []);
+
+  return (
+    &lt;div className="result">
+      &lt;h3>Here are your test results.&lt;/h3>
+      &lt;div className="result-data">
+        &lt;p className="result-data-category">Total Score: &lt;/p>
+        &lt;p>{result.max}/5&lt;/p>
+      &lt;/div>
+
+      &lt;div className="result-data">
+        &lt;p className="result-data-category">Date of Quiz: &lt;/p>
+        &lt;p> {result.time}&lt;/p>
+      &lt;/div>
+
+      &lt;div className="result-data">
+        &lt;p className="result-data-category">Performance: &lt;/p>
+        &lt;p> {getPerformanceText(result.max)}&lt;/p>
+      &lt;/div>
+
+      &lt;h3>Please refer the answer key below&lt;/h3>
+      {&lt;AnswerTable ansSummary={result?.ansSummary || []} />}
+
+      &lt;div className="go-to-dashboard-container">
+        &lt;a href="/dashboard" className="go-to-dashboard">
+          Go To Dashboard
+        &lt;/a>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+
+export default Result;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AnswerTable">AnswerTable</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#QuestionCard">QuestionCard</a></li><li><a href="global.html#QuizCard">QuizCard</a></li><li><a href="global.html#QuizCategoryCard">QuizCategoryCard</a></li><li><a href="global.html#QuizOptions">QuizOptions</a></li><li><a href="global.html#Quizzes">Quizzes</a></li><li><a href="global.html#Result">Result</a></li><li><a href="global.html#StartQuiz">StartQuiz</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Apr 16 2022 18:50:15 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
