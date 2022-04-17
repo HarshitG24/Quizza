@@ -60,6 +60,10 @@ function Result(props) {
 
       console.log("fetched result is", fetchedResult);
 
+      if (typeof fetchedResult === Array) {
+        fetchedResult = fetchedResult[fetchedResult.length - 1];
+      }
+
       let max = 0;
       let time = "";
       let ansSummary = [];
