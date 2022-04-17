@@ -46,6 +46,12 @@ function Result(props) {
     }
   }
 
+  /**
+   * Used to encapsulate code which has side effects.
+   * @typedef {Function} useEffect - React Hook which is rendered only once.
+   * @param {Function} - Has an arraow function, which performs some tasks.
+   * @param {Array} - Contains the list of variables which when changes, useEffect is called
+   */
   useEffect(() => {
     getData("quiz_score", "quiz", (fetchedResult) => {
       fetchedResult = fetchedResult.filter(
