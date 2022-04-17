@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# About the Project
+This project was made by Harshit Gajjar for PDP Project 2.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Initializing the project
+1. Git clone the repo
+2. Checkout to the folder
+3. Run npm install
+4. npm start
 
-## Available Scripts
+# About the project
+The project has following features:
+1. Home page - Which gives details about the website
+2. Quizzes Page - Where users can select category they want to take quiz for
+3. Dashboard Page - Fetches data from minimongo database and shows all the tests taken by the user.
+4. Results page - It shows the following data:  Date of quiz, score of quiz, answer summary, performance and a tables which shows the user answer and correct answer and colors the row in green if the answer was correct and the row is colored in red, if the answer was wrong.
+5. Minimongo - Implemented only on Dashboard page
 
-In the project directory, you can run:
 
-### `npm start`
+* User will land on the home page.
+* They can go to the quizzes page and select a category to take the quiz.
+* Once category selected, they can start teh quiz.
+* User will be presented randomly picked 5 questions and 4 options, out of which only one option will be correct.
+* User's cannot go back to previous question
+* In order to go to next question, user has to select one option of the given question.
+* User can change their selected option before clicking next.
+* To see the score, user has to complete the quiz, answering all 5 questions.
+* If the user closes the browser or refreshes the page in middle of the quiz, the quiz won't be considered and no scores will be generated nor results will be stored in the database.
+* User can take quiz on same category multiple times, but only the latest quiz result will be stored in database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Minimongo Implementation
+Minimongo has been implemented only on the dashboard page.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Testing Minimongo
+* User should take a quiz.
+* If they go to dashboard page, they can see the results of all quizes taken so far.
+* Even if they refresh the page, the results will be still retained on the User Interface.
+* If the users take the same quiz multiple times, the latest results are stored in database and previous onces are removed.
+* If multiple quizzes taken, user can see the latest result only on dashboard.
+* On no other page, minimongo is implemented
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
