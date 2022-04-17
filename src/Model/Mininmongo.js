@@ -93,13 +93,15 @@ const findAndRemove = (
   collection = "quiz",
   selectedCategory
 ) => {
-  getData(dbName, collection, (foundResultObj) => {
+  getData(dbName, collection, async (foundResultObj) => {
     let obj = foundResultObj.find(
       (e) => e.selectedCategory === selectedCategory
     );
 
+    console.log("the found obj is", obj);
+
     if (obj !== undefined) {
-      removeFromDb(dbName, collection, obj);
+      await removeFromDb(dbName, collection, obj);
     }
   });
 };

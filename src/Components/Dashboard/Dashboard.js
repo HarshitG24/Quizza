@@ -29,6 +29,7 @@ function Dashboard() {
 
   useEffect(() => {
     getData("quiz_score", "quiz", (fetchedResult) => {
+      console.log("quizzes on dashboard", fetchedResult);
       setQuizesTaken(fetchedResult);
     });
   }, []);

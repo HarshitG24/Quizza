@@ -58,6 +58,8 @@ function Result(props) {
         (q) => q.selectedCategory === selectedCategory
       );
 
+      console.log("fetched result is", fetchedResult);
+
       let max = 0;
       let time = "";
       let ansSummary = [];
