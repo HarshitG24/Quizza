@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Quizzes/Quizzes.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,43 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Quizzes/Quizzes.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { availableCategories } from "../../Quiz Questions/Data";
+import QuizCategoryCard from "./QuizCategoryCard";
 
+/**
+ * Component for showing the UI of the cards which shows category names.
+ * @component
+ * @param {Object} Props - An object.
+ * @param {String} props.selectedCategory - Variable which contains the name of the category selected by the user
+ * @param {Function} props.setCategory - Function which updates the variable selectedCategory with the category selected by the user.
+ */
 
-    <h3> </h3>
+function Quizzes(props) {
+  const { setCategory, selectedCategory } = props;
+  return (
+    &lt;div className="quiz-background">
+      &lt;QuizCategoryCard
+        category={availableCategories}
+        setCategory={setCategory}
+        selectedCategory={selectedCategory}
+      />
+    &lt;/div>
+  );
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Quizzes;
+</code></pre>
+        </article>
+    </section>
 
 
 
