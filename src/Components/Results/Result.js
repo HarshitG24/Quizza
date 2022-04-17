@@ -29,7 +29,7 @@ function Result(props) {
    */
   function getPerformanceText(score) {
     switch (score) {
-      case 1:
+      case 0:
         return "Very Poor";
       case 1:
         return "Very Poor";
@@ -63,7 +63,6 @@ function Result(props) {
       let ansSummary = [];
       (fetchedResult || []).forEach((e) => {
         if (e?.quizData?.currentScore >= max) {
-          console.log("e", e);
           let data = e?.quizData;
           max = data?.currentScore;
           time = data?.dateTime;

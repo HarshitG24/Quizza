@@ -16,7 +16,7 @@ function QuestionCard(props) {
   return (
     <div className="question-card">
       <div className="card">
-        <p>Question {index + 1}</p>
+        <p id="question-number">Question {index + 1}</p>
         <p>{question.question}</p>
         <ul className="quiz-options">
           <QuizOptions

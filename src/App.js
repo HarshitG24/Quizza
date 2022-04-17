@@ -10,7 +10,6 @@ import Home from "./Components/Home/Home";
 
 function App() {
   const [selectedCategory, setCategory] = useState("");
-  console.log("the category is this:", selectedCategory);
   return (
     <BrowserRouter>
       <Navbar />

@@ -56,6 +56,7 @@ function QuizCategoryCard(props) {
 
         <div className="take-quiz-btn">
           <button
+            id="take-quiz"
             className={
               selectedCategory === ""
                 ? "quiz-btn quiz-btn-disabled"
