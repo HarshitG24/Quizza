@@ -12,6 +12,12 @@ import { useEffect } from "react";
 function QuizOptions(props) {
   const { options, currentOption, setCurrentOption } = props;
 
+  /**
+   * Used to encapsulate code which has side effects.
+   * @typedef {Function} useEffect - React Hook which is rendered only once.
+   * @param {Function} - Has an arrow function, which performs some tasks.
+   * @param {Array} - Contains the list of variables which when changes, useEffect is called
+   */
   useEffect(() => {
     setCurrentOption(-1);
   }, []);

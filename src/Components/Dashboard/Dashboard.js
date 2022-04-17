@@ -21,9 +21,10 @@ function Dashboard() {
   const [quizesTaken, setQuizesTaken] = useState([]);
 
   /**
-   * @function
-   * @param {Function} Imperative_Function An imperative function, which will be exceuted
-   * @param {Array} Contains the list of parameters which determines, when to call the function again
+   * Used to encapsulate code which has side effects.
+   * @typedef {Function} useEffect - React Hook which is rendered only once.
+   * @param {Function} - Has an arrow function, which performs some tasks.
+   * @param {Array} - Contains the list of variables which when changes, useEffect is called
    */
 
   useEffect(() => {
