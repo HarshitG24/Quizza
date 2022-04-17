@@ -1,3 +1,9 @@
+/**
+ * @typedef {Function} shuffle
+ * @param {Array} arr - Takes an array of all the dataset of category selected by user
+ * @returns {Array}
+ * @description shuffles the original array in random order
+ */
 function shuffle(arr) {
   let j, x, index;
   for (index = arr.length - 1; index > 0; index--) {

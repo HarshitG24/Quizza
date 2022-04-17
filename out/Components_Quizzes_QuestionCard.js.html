@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Components/Quizzes/QuestionCard.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,51 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Components/Quizzes/QuestionCard.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import "./css/QuestionCard.css";
+import QuizOptions from "./QuizOptions";
 
+/**
+ * Component for UI of the questions, the card which contains questions and options
+ * @component
+ * @param {Object} Props - An object.
+ * @param {string} props.question - Contains the question to be displayed.
+ * @param {string} props.index - Contains the current question number
+ * @param {number} props.currentOption - Contains the option selected by the user for the question
+ * @param {Function} props.setCurrentOption - To set the option in the variable currentOption, as selected by the user.
+ */
 
-    <h3> </h3>
+function QuestionCard(props) {
+  const { question, index, currentOption, setCurrentOption } = props;
+  return (
+    &lt;div className="question-card">
+      &lt;div className="card">
+        &lt;p>Question {index + 1}&lt;/p>
+        &lt;p>{question.question}&lt;/p>
+        &lt;ul className="quiz-options">
+          &lt;QuizOptions
+            options={question.allOptions}
+            currentOption={currentOption}
+            setCurrentOption={setCurrentOption}
+          />
+        &lt;/ul>
+      &lt;/div>
+    &lt;/div>
+  );
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default QuestionCard;
+</code></pre>
+        </article>
+    </section>
 
 
 
