@@ -46,6 +46,7 @@ Minimongo has been implemented only on the dashboard page.
 ## The tests written
 1. One test is to make sure that initially on the quizzes page, the take quiz button is disabled and should become enabled only after category is selected.
 2. One test is to make sure that unless user doesn't select an option for the question, then cannot proceed to the next question.
-3. One test is to make sure that user is directed to dashboard from results page, when clicking on go-to-dashboard button.
+3. One test is to make sure that when user goes to dashboard and no tests are taken, it shows the correct text
 
-
+# Deployed version of the website
+The website is deployed using surge on the following website: [http://profuse-plants.surge.sh/](http://profuse-plants.surge.sh/)
