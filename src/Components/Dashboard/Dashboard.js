@@ -3,11 +3,31 @@ import { getData } from "../../Model/Mininmongo";
 import "./css/Dashboard.css";
 import QuizCard from "./QuizCard";
 
-function Dashboard(props) {
+/**
+ * Component for showing UI for all the quizzes taken by user so far, including date of quiz, score and answer key.
+ * @component
+ *
+ */
+
+function Dashboard() {
+  /**
+   * @typedef {Boolean} quizesTaken
+   * @description stores the quizzes taken by user
+   */
+  /**
+   * @typedef {Function} setQuizesTaken — function to store the quizzes taken so far by user
+   */
+
   const [quizesTaken, setQuizesTaken] = useState([]);
+
+  /**
+   * @function
+   * @param {Function} Imperative_Function An imperative function, which will be exceuted
+   * @param {Array} Contains the list of parameters which determines, when to call the function again
+   */
+
   useEffect(() => {
     getData("quiz_score", "quiz", (fetchedResult) => {
-      console.log("fetchedResult for dashboard", fetchedResult);
       setQuizesTaken(fetchedResult);
     });
   }, []);

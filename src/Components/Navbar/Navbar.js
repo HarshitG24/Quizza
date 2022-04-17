@@ -1,5 +1,11 @@
 import "./css/Navbar.css";
 
+/**
+ * Component for showing Navbar and the options in a Navbar.
+ * @component
+ *
+ */
+
 function Navbar() {
   return (
     <div>

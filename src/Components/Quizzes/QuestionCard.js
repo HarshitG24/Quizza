@@ -1,27 +1,18 @@
 import "./css/QuestionCard.css";
-import { optionLabels } from "../../Model/Helpers";
-import { useState, useEffect } from "react";
 import QuizOptions from "./QuizOptions";
+
+/**
+ * Component for UI of the questions, the card which contains questions and options
+ * @component
+ * @param {Object} Props - An object.
+ * @param {string} props.question - Contains the question to be displayed.
+ * @param {string} props.index - Contains the current question number
+ * @param {number} props.currentOption - Contains the option selected by the user for the question
+ * @param {Function} props.setCurrentOption - To set the option in the variable currentOption, as selected by the user.
+ */
 
 function QuestionCard(props) {
   const { question, index, currentOption, setCurrentOption } = props;
-
-  // const [currentOption, setCurrentOption] = useState(-1);
-  const [optionsArray, setOptionsArray] = useState([]);
-
-  // function shuffleArray(array) {
-  //   for (let i = array.length - 1; i > 0; i--) {
-  //     let j = Math.floor(Math.random() * (i + 1));
-  //     let temp = array[i];
-  //     array[i] = array[j];
-  //     array[j] = temp;
-  //   }
-
-  //   return array;
-  // }
-
-  console.log(question);
-
   return (
     <div className="question-card">
       <div className="card">
@@ -32,8 +23,6 @@ function QuestionCard(props) {
             options={question.allOptions}
             currentOption={currentOption}
             setCurrentOption={setCurrentOption}
-            // currentOption={currentOption}
-            // setCurrentOption={setCurrentOption}
           />
         </ul>
       </div>

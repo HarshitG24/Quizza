@@ -1,7 +1,10 @@
 import "./css/Home.css";
 
-//https://cdni.iconscout.com/illustration/premium/thumb/young-people-study-prepare-for-exam-get-knowledge-2706162-2260911.png
-//cdni.iconscout.com/illustration/premium/thumb/knowledge-ladder-4911970-4088928.png
+/**
+ * Component for showing the home page, which contains images, quotes and features of the website
+ * @component
+ *
+ */
 function Home() {
   return (
     <div className="home">

@@ -1,8 +1,13 @@
 import "./css/AnswerTable.css";
 
+/**
+ * Component for showing the table UI, which contains the question, correct answer and the user answer
+ * @component
+ * @param {Object} Props - An object.
+ * @param {Object} props.ansSummary - Array which conatins the the question number, correct answer and user answer
+ */
 function AnswerTable(props) {
   const { ansSummary } = props;
-  console.log("answer summary", ansSummary);
   return (
     <div>
       <table className="ans-table">

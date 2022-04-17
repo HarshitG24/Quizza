@@ -3,10 +3,30 @@ import { getData } from "../../Model/Mininmongo";
 import "./css/Result.css";
 import AnswerTable from "./AnswerTable";
 
+/**
+ * Component for showing the table UI, which contains the question, correct answer and the user answer
+ * @component
+ * @param {Object} Props - An object.
+ * @param {String} props.selectedCategory - It contains the category of the quiz taken by the user.
+ */
+
 function Result(props) {
   const { selectedCategory } = props;
+
+  /**
+   * @typedef {Object} result
+   * @description Object containing the score obtained by user, date of the quiz, array of objects, which contains question, correct and user answer
+   */
+  /**
+   * @typedef {Function} setResult — function to update the variable result, after being fetched from minimongo database.
+   */
   const [result, setResult] = useState({});
 
+  /**
+   * @typedef {Function} getPerformanceText
+   * @param {Number} score The score obtained by the user in the current quiz
+   * @returns {String} Returns a word string demonstrating the user's performance in the quiz
+   */
   function getPerformanceText(score) {
     switch (score) {
       case 1:
