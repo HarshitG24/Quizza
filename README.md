@@ -63,6 +63,8 @@ The website is deployed using surge on the following website: [http://profuse-pl
 
 Inside the **out** folder, **index.html** for JsDoc can be found.
 
-# Business Requirement File Location
+# Business Requirement and Modular Diagram File Location
 
 The Business requirement document is added in this same project files with the name **PDP Project 2 Harshit Gajjar**
+
+The modular diagrm image is added in same project with the name **Modular Diagram.png**
